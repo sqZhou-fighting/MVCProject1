@@ -1,6 +1,7 @@
 package edu.nuaa.servlet.ZongZheServlet;
 
 import edu.nuaa.factory.DaoFactory;
+import edu.nuaa.vo.ZhouShiQiVo.AppInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,6 +32,15 @@ public class SaveExcelServlet extends HttpServlet {
 
         //Written by Zhou
         //存储应用信息
+        AppInfo ai = new AppInfo();
+        ai.setUserId(userid);
+        ai.setAppName(appname);
+        ai.setDataName(appname+"原始数据集");
+        try {
+            DaoFactory.getAppInfoDaoInstance().doCreate(ai);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //Written by Zong 2017 12 3
         //存储数据集文件
